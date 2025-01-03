@@ -1,0 +1,173 @@
+⍝ Adjoints of differentiable functions (non-differentiable ones are handled in test.dyalog).
+dadd_dydOmega_ref←{⍺ ⍺}
+
+dcatdOmega_ref←{(⍴⍵)⍴⍺}
+
+dcat_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    ((≢⍉a)(↑⍤1)⍺) ((≢⍉a)(↓⍤1)⍺)
+}
+
+dcircdOmega_ref←{⍺×○1}
+
+dcirc_dydOmega_ref←{⍺×2○⍵}
+
+dcircstardOmega_ref←{⍺÷⍵}
+
+dcircstar_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    (⍺×-(a⍟b)÷a×⍟a) (⍺÷b×⍟a)
+}
+
+ddisclosedOmega_ref←{
+    a←⍵
+    a×←0
+    (⊃a)←⍺
+    a
+}
+
+ddisclose_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    b×←0
+    (a⊃b)←⍺
+    (0×a) (b)
+}
+
+ddivdOmega_ref←{⍺÷-⍵*2}
+
+ddiv_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    (⍺÷b) (⍺×a÷-b*2)
+}
+
+ddrop_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    b×←0
+    (a↓b)←⍺
+    (0×a) (b)
+}
+
+denclosedOmega_ref←{⊃⍺}
+
+din_dOmega_ref←{
+    a←⍵
+    (∊a)←⍺
+    a
+}
+
+dmax_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    (⍺×a≥b) (⍺×b≥a)
+}
+
+
+dmin_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    (⍺×a≤b) (⍺×b≤a)
+}
+
+dpipedOmega_ref←{⍺××⍵}
+
+dpowdOmega_ref←{⍺×*⍵}
+
+dpow_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    (⍺×b×(a*b-1)) (⍺×(⍟a)×a*b)
+}
+
+drho_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    (0×a) ((⍴b)⍴⍺)
+}
+
+drotdOmega_ref←{⌽⍺}
+
+drot_dydOmega_ref←{
+    a←1⊃⍵
+    (0×a) ((-a)⌽⍺)
+}
+
+dsquad_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    b×←0
+    (a⌷b)←⍺
+    (0×a) (b)
+}
+
+dsubdOmega_ref←{-⍺}
+
+dsub_dydOmega_ref←{(⍺) (-⍺)}
+
+dtake_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    b×←0
+    (a↑b)←⍺
+    (0×a) (b)
+}
+
+dtimes_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    (⍺×b) (⍺×a)
+}
+
+dtransdOmega_ref←{⍉⍺}
+
+dtrans_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    (a⍉b)←⍺
+    (0×a) (b)
+}
+
+dvcatdOmega_ref←{(⍴⍵)⍴⍺}
+
+dvcat_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    ((≢a)↑⍺) ((≢a)↓⍺)
+}
+
+dvrotdOmega_ref←{⊖⍺}
+
+dvrot_dydOmega_ref←{
+    a←1⊃⍵
+    (0×a) ((-a)⊖⍺)
+}
+
+⍝ Adjoints of perators.
+ddot_dy_dydOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+
+    dim_a←×/¯1↓⍴a
+    dim_b←×/1↓⍴b
+
+    mat_a←(dim_a,¯1↑⍴a)⍴a
+    mat_b←((1↑⍴b),dim_b)⍴b
+    mat_dy←(dim_a,dim_b)⍴⍺
+
+    ((⍴a)⍴mat_dy+.×⍉mat_b) ((⍴b)⍴(⍉mat_a)+.×mat_dy)
+}
+
+djot_dy_mon1dOmega_ref←{0×⍵}
+
+djot_dy_mon2dOmega_ref←{⍺×*⍵}
+
+djot_dy_dy1dOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    (⍉({+/,⍵}⍤((≢⍴⍺)-(≢⍴a)))⍉⍺) (⍉({+/,⍵}⍤((≢⍴⍺)-(≢⍴b)))⍉⍺)
+}
+
+djot_dy_dy2dOmega_ref←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+
+    full_a←b(×⍤2)⍺
+    full_b←a(×⍤2)⍺
+
+    (⍉({+/,⍵}⍤((≢⍴⍺)-(≢⍴a)))⍉full_a) (⍉({+/,⍵}⍤((≢⍴⍺)-(≢⍴b)))⍉full_b)
+}
+
+dslash_mon_mon1dOmega_ref←{⍉(⍉⍺)(×⍤(≢⍴⍺))⍉1+0×⍵}
+
+dslash_mon_mon2dOmega_ref←{⍉(⍉⍺)(×⍤(≢⍴⍺))(⍉⌈/⍵)(=⍤(≢⍴⍺))⍉⍵}
+
+dslashbar_mon_mon1dOmega_ref←{⍺(×⍤(≢⍴⍺))1+0×⍵}
+
+dslashbar_mon_mon2dOmega_ref←{⍺(×⍤(≢⍴⍺))(⌈⌿⍵)(=⍤(≢⍴⍺))⍵}

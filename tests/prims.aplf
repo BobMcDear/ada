@@ -1,0 +1,223 @@
+⍝ Functions.
+add_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a+b
+}
+
+and_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a∧b
+}
+
+cat←{,⍵}
+
+cat_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a,b
+}
+
+circ←{○⍵}
+
+circ_dy←{1○⍵}
+
+circstar←{⍟⍵}
+
+circstar_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a⍟b
+}
+
+disclose←{⊃⍵}
+
+disclose_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a⊃b
+}
+
+div←{÷⍵}
+
+div_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a÷b
+}
+
+drop_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a↓b
+}
+
+enclose←{⊂⍵}
+
+eq_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a=b
+}
+
+gradedown←{⍒⍵}
+
+gradeup←{⍋⍵}
+
+gt_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a>b
+}
+
+gteq_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a≥b
+}
+
+in_←{∊⍵}
+
+iota←{⍳⍵}
+
+lt_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a<b
+}
+
+lteq_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a≤b
+}
+
+match←{≡⍵}
+
+match_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a≡b
+}
+
+max←{⌈⍵}
+
+max_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a⌈b
+}
+
+min←{⌊⍵}
+
+min_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a⌊b
+}
+
+nand_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a⍲b
+}
+
+nmatch←{≢⍵}
+
+nmatch_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a≢b
+}
+
+nor_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a⍱b
+}
+
+or_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a∨b
+}
+
+pipe←{|⍵}
+
+pow←{*⍵}
+
+pow_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a*b
+}
+
+rho←{⍴⍵}
+
+rho_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a⍴b
+}
+
+rot←{⌽⍵}
+
+rot_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a⌽b
+}
+
+squad_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a⌷b
+}
+
+sub←{-⍵}
+
+sub_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a-b
+}
+
+take_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a↑b
+}
+
+tilde←{~⍵}
+
+times←{×⍵}
+
+times_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a×b
+}
+
+trans←{⍉⍵}
+
+trans_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a⍉b
+}
+
+vcat←{⍪⍵}
+
+vcat_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a⍪b
+}
+
+vrot←{⊖⍵}
+
+vrot_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a⊖b
+}
+
+⍝ Operators.
+dot_dy_dy←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a+.×b
+}
+
+jot_dy_mon1←{(⍋⍤1)⍵}
+
+jot_dy_mon2←{(*⍤2)⍵}
+
+jot_dy_dy1←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a(+⍤1)b
+}
+
+jot_dy_dy2←{
+    a←1⊃⍵ ⋄ b←2⊃⍵
+    a(×⍤2)b
+}
+
+slash_mon_mon1←{+/⍵}
+
+slash_mon_mon2←{⌈/⍵}
+
+slashbar_mon_mon1←{+⌿⍵}
+
+slashbar_mon_mon2←{⌈⌿⍵}
